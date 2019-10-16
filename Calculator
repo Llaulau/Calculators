@@ -1,0 +1,98 @@
+func add (_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+func substract (_ a: Int, _ b: Int) -> Int {
+    return a - b
+}
+
+func multiply (_ a: Int, _ b: Int) -> Int {
+    return a * b
+}
+func divide (_ a: Int, _ b: Int) -> Int {
+    return a / b
+}
+
+func modulo (_ a: Int, _ b: Int) -> Int {
+    return a % b
+}
+
+func performOperation (_ execute: (Int, Int) -> Int, param1: Int, param2: Int) -> String {
+    let resultat = execute(param1, param2)
+    return ("Resultat = \(resultat)")
+}
+
+var monResultat = performOperation(add, param1: 200, param2: 300)
+print ( monResultat )
+
+monResultat = performOperation(multiply, param1: 200, param2: 300)
+print ( monResultat )
+
+// var nom = "Patrice Serugendo".uppercased()
+// print (nom)
+
+var performAddition = ({(param1: Int, param2: Int) -> Int in
+    return param1 + param2
+})
+
+print (performAddition(200, 300))
+
+// PerformOperation 2
+var performAddition2 = ({(param1: IntegerLiteralType, param2: IntegerLiteralType) in
+    return param1 + param2
+    
+})
+
+print (performAddition2(200, 300))
+
+var performConcatenation = { a, b, c, d in "" + a + b + c + d } // String exemple
+// var performConcatenation = { a, b, c, d in 0 + a + b + c + d } Integer exemple
+// var performConcatenation = { a, b, c, d in 0.0 + a + b + c + d } Double exemple
+
+let newStringValue = performConcatenation("Daniel", "Guillaume", "Nicolas", "Alpha")
+
+print (newStringValue)
+
+"Yes" .lowercased()
+"No" .uppercased()
+
+"OK" .count
+
+/*
+ 
+ var oddNumbers = [Int]()
+ var numbt = 0
+ for newNumt in 0..<100 {
+ var newNumt = numbt + 1; numbt += 2; oddNumbers.append(newNumt)
+ }
+ 
+ print(oddNumbers)
+ 
+ */
+
+// Response à l'exercice
+func toUpperCase( _ str: String ) -> {
+    return str.uppercased()
+}
+
+func toLowerCase( _ str: String ) -> String {
+    return str.lowercased()
+}
+
+func transoformString (_ str: String, _ transformer: (String) -> String) -> String {
+    return transformer(str)
+}
+
+func transform (_ str: String) -> String {
+    if str.count % 2 == 0 {
+        return transformString(str, toUpperCase(_:))
+    }
+    else {
+        return transformString(str, toLowerCase(_:))
+    }
+}
+
+var cantons = ["Geneve", "Vaud", "Valais", "Fribourg", "Berne", "Neuchatel", "Jura", "Zurich", "Saint-Gall", "Soleure", "Uri", "Lucerne", "Schwytz", "Nidwald", "Obwald", "Ticino", "Bale"]
+
+for canton in cantons {
+    print (transform(canton))
+}
